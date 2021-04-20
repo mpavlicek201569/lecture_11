@@ -38,6 +38,18 @@ def linear_search(seq, num):
     }
 
 
+def pattern_search(sequence, pattern):
+    mnozina = set()
+    pattern_size = len(pattern)
+
+    for i in range(len(sequence)):
+        if sequence[i:i+pattern_size] == pattern:
+            mnozina.add((i+pattern_size) // 2)
+
+    return mnozina
+
+
+
 
 def main():
     sequential_data = read_data("sequential.json", "unordered_numbers")
@@ -46,6 +58,9 @@ def main():
     result_1 = linear_search(sequential_data, 9)
     print(result_1)
 
+    sequential_data = read_data("sequential.json", "dna_sequence")
+    result_2 = pattern_search(sequential_data, "ATA")
+    print(result_2)
 
 if __name__ == '__main__':
     main()
